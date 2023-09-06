@@ -1,32 +1,35 @@
 "use strict";
 
-let artists;
-const endpoint = "http://localhost:5000";
+import { endpoint, getArtists, createArtist, deleteArtist } from "./rest-service.js";
+
+endpoint;
 window.addEventListener("load", start);
+let artists;
 
 async function start() {
   console.log("Velkommen!");
   await getArtists();
   updateGrid();
-  console.log(artists);
 
   //Create Artist
   document.querySelector("#create-dialog-show").addEventListener("click", showCreateArtist);
-}
 
-async function getArtists() {
-  const response = await fetch(`${endpoint}/artist`);
-  const data = await response.json();
-  artists = data;
-  displayArtists(artists);
+  //Delete Artist
+  // document.querySelector("#form-delete-artist").addEventListener("submit", deleteArtistClicked);
+  // document.querySelector("#form-delete-artist .btn-cancel").addEventListener("click", deleteArtistClickedNo);
 }
 
 //-------------------Update Grid----------------------//
 
 async function updateGrid() {
-  await getArtists();
+  artists = await getArtists();
   displayArtists(artists);
+  console.log(artists);
 }
+
+//------------------- Get Artist  ----------------------//
+
+getArtists();
 
 function displayArtists(listOfArtist) {
   document.querySelector("#artists").innerHTML = "";
@@ -51,6 +54,12 @@ function showArtists(artistObject) {
     </article>
   `;
   document.querySelector("#artists").insertAdjacentHTML("beforeend", html);
+
+  document.querySelector("#artists article:last-child .btn-delete").addEventListener("click", (event) => {
+    event.stopPropagation();
+    deleteClicked(artistObject);
+  });
+
   document.querySelector("#artists article:last-child").addEventListener("click", () => artistClicked(artistObject));
 }
 
@@ -73,33 +82,6 @@ function showDialog(artistObject) {
 
 //-------------------Create Artist----------------------//
 
-async function createArtist(id, image, name, shortDescription, birthdate, genres, activeSince, website) {
-  const newArtist = {
-    id: id,
-    image: image,
-    name: name,
-    shortDescription: shortDescription,
-    birthdate: birthdate,
-    genres: genres,
-    activeSince: activeSince,
-    website: website,
-  };
-  const postAsJson = JSON.stringify(newArtist);
-
-  //   const response = await fetch(`${endpoint}/artist`, { method: "POST",
-  //    body: postAsJson });
-
-  const response = await fetch(`${endpoint}/artist`, {
-    method: "POST",
-    headers: {
-      "Content-Type": "application/json", // Bemærk ændringen her
-    },
-    body: postAsJson,
-  });
-
-  return response;
-}
-
 function showCreateArtist() {
   const dialog = document.querySelector("#show-artist");
 
@@ -107,7 +89,7 @@ function showCreateArtist() {
 
   dialog.showModal();
 
-  document.querySelector("#create-artist").addEventListener("submit", createArtistClicked);
+  document.querySelector("#createArtist").addEventListener("submit", createArtistClicked);
 
   dialog.querySelector(".close").addEventListener("click", () => {
     dialog.close();
@@ -131,10 +113,36 @@ async function createArtistClicked(event) {
   const response = await createArtist(id, image, name, shortDescription, birthdate, genres, activeSince, website);
 
   if (response.ok) {
+    console.log("Artist have been created!");
     form.reset();
     updateGrid();
   }
-  document.querySelector("#show-artist").close();
+  document.querySelector("#artist-show").close();
 }
 
 //-------------------Delete Artist----------------------//
+
+deleteArtist();
+
+function deleteClicked(artist) {
+  console.log("Delete button clicked");
+  document.querySelector("#artistName").textContent = `Do you want to delete: ${artist.name}in the artist register?`;
+  document.querySelector("#form-delete-artist").setAttribute("data-id", artist.id);
+  document.querySelector("#dialog-delete-artist").showModal();
+}
+
+async function deleteArtistClicked(event) {
+  console.log(event);
+  const id = event.target.getAttribute("data-id");
+  const response = await deleteArtist(id);
+  if (response.ok) {
+    deleteArtist(id);
+    updateGrid();
+  }
+  document.querySelector("#dialog-delete-artist").close();
+}
+
+function deleteArtistClickedNo() {
+  console.log("Close delete dialog");
+  document.querySelector("#dialog-delete-artist").close();
+}

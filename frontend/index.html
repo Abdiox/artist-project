@@ -65,7 +65,7 @@
       <img src="https://freesvg.org/img/1548005024.png" alt="Logo" class="logo" />
       <h1>Add artist</h1>
 
-      <form action="" method="post" id="create-artist">
+      <form action="" method="post" id="createArtist">
         <label for="image">Image:</label>
         <input type="url" id="image" name="image" placeholder="Paste an image URL" required /><br /><br />
 
@@ -104,11 +104,23 @@
 <input type="url" id="website" name="website" placeholder="https://www.example.com"  /><br /><br />
 
 
+    <!------------- Delete Dialog ----------->
+  <dialog id="dialog-delete-artist" class="dialog-artist">
+      <h2>Do you want to delete this artist?</h2>
+      <p id="artistName">Name of artist</p>
+      <form method="dialog" id="form-delete-artist">
+        <button type="button" class="btn-cancel">No</button>
+        <button  type="button" class="btn-cancel-yes">Yes</button>
+      </form>
+    </dialog>
+
+
         <input type="submit" value="Add new artist" />
       </form>
       <button class="close" type="button">X</button>
     </dialog>
 
   </body>
-  <script src="/frontend/frontend.js"></script>
+  <script src="/frontend/frontend.js" type="module" ></script>
+
 </html>
