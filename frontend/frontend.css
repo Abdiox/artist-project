@@ -312,7 +312,7 @@ button:hover {
   box-shadow: 0px 4px 8px rgba(0, 0, 0, 0.3);
 }
 
-#dialog-create-game {
+#dialog-create-artist {
   width: 500px;
   padding: 20px;
   background-color: #fff;
@@ -320,22 +320,22 @@ button:hover {
   box-shadow: 0px 0px 10px rgba(0, 0, 0, 0.3);
 }
 
-#dialog-create-game h1 {
+#dialog-create-artist h1 {
   font-size: 30px;
   margin: 0 0 20px;
   text-align: center;
 }
 
-#dialog-create-game label {
+#dialog-create-artist label {
   display: block;
   margin-bottom: 10px;
   font-size: 16px;
 }
 
-#dialog-create-game input[type="url"],
-#dialog-create-game input[type="text"],
-#dialog-create-game input[type="number"],
-#dialog-create-game textarea {
+#dialog-create-artist input[type="url"],
+#dialog-create-artist input[type="text"],
+#dialog-create-artist input[type="number"],
+#dialog-create-artist textarea {
   width: 100%;
   padding: 10px;
   font-size: 16px;
@@ -345,7 +345,7 @@ button:hover {
   margin-bottom: 20px;
 }
 
-#dialog-create-game input[type="submit"] {
+#dialog-create-artistinput[type="submit"] {
   background-color: #f3ce13;
   color: #fff;
   padding: 10px 20px;
@@ -356,11 +356,11 @@ button:hover {
   transition: all 0.2s ease-in-out;
 }
 
-#dialog-create-game input[type="submit"]:hover {
+#dialog-create-artist input[type="submit"]:hover {
   background-color: #e0b400;
 }
 
-#dialog-create-game button.close {
+#dialog-create-artist button.close {
   background-color: transparent;
   border: none;
   color: #aaa;
