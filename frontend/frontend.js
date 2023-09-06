@@ -1,6 +1,6 @@
 "use strict";
 
-import { endpoint, getArtists, createArtist, deleteArtist } from "./rest-service.js";
+import { endpoint, getArtists, createArtist, deleteArtist, updateArtist } from "./rest-service.js";
 
 endpoint;
 window.addEventListener("load", start);
@@ -13,6 +13,9 @@ async function start() {
 
   //Create Artist
   document.querySelector("#create-dialog-show").addEventListener("click", showCreateArtist);
+
+  //Update Artist
+  document.querySelector("#form-update-artist").addEventListener("submit", updateArtistClicked);
 
   //Delete Artist
   document.querySelector("#form-delete-artist").addEventListener("submit", deleteArtistClicked);
@@ -54,6 +57,12 @@ function showArtists(artistObject) {
     </article>
   `;
   document.querySelector("#artists").insertAdjacentHTML("beforeend", html);
+
+  document.querySelector("#artists").insertAdjacentHTML("beforeend", html);
+  document.querySelector("#artists article:last-child .btn-update").addEventListener("click", (event) => {
+    event.stopPropagation();
+    updateClicked(artistObject);
+  });
 
   document.querySelector("#artists article:last-child .btn-delete").addEventListener("click", (event) => {
     event.stopPropagation();
@@ -117,6 +126,51 @@ async function createArtistClicked(event) {
     updateGrid();
   }
   document.querySelector("#dialog-create-artist").close();
+}
+
+//-------------------Update Artist----------------------//
+function updateClicked(artistObject) {
+  console.log("Update button clicked");
+  const updateForm = document.querySelector("#form-update-artist");
+  const dialog = document.querySelector("#dialog-update-artist");
+
+  updateForm.image.value = artistObject.image;
+  updateForm.name.value = artistObject.name;
+  updateForm.shortDescription.value = artistObject.shortDescription;
+  updateForm.birthdate.value = artistObject.birthdate;
+  updateForm.genres.value = artistObject.genres;
+  updateForm.activeSince.value = artistObject.activeSince;
+  updateForm.website.value = artistObject.website;
+  document.querySelector("#form-update-artist").setAttribute("data-id", artistObject.id);
+  dialog.showModal();
+
+  dialog.querySelector(".close").addEventListener("click", () => {
+    dialog.close();
+    console.log("Update view closed");
+  });
+}
+
+async function updateArtistClicked(event) {
+  console.log("Update button clicked");
+  event.preventDefault();
+  const form = event.target;
+  const id = event.target.getAttribute("data-id");
+
+  const image = form.image.value;
+  const name = form.name.value;
+  const shortDescription = form.shortDescription.value;
+  const birthdate = form.birthdate.value;
+  const genres = form.genres.value;
+  const activeSince = form.activeSince.value;
+  const website = form.website.value;
+
+  const response = await updateArtist(id, image, name, shortDescription, birthdate, genres, activeSince, website); // use values to create a new post
+  if (response.ok) {
+    updateGrid();
+
+    updateArtist(id, image, name, shortDescription, birthdate, genres, activeSince, website);
+  }
+  document.querySelector("#dialog-update-artist").close();
 }
 
 //-------------------Delete Artist----------------------//

@@ -51,7 +51,7 @@ async function updateArtist(id, image, name, shortDescription, birthdate, genres
   };
 
   const json = JSON.stringify(updatedArtist);
-  const response = await fetch(`${endpoint}/games/${id}`, {
+  const response = await fetch(`${endpoint}/artist/${id}`, {
     method: "PUT",
     headers: {
       "Content-Type": "application/json",
