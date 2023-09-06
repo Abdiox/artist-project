@@ -58,7 +58,6 @@ function showArtists(artistObject) {
   `;
   document.querySelector("#artists").insertAdjacentHTML("beforeend", html);
 
-  document.querySelector("#artists").insertAdjacentHTML("beforeend", html);
   document.querySelector("#artists article:last-child .btn-update").addEventListener("click", (event) => {
     event.stopPropagation();
     updateClicked(artistObject);
