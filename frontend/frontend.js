@@ -73,8 +73,9 @@ function showDialog(artistObject) {
 
 //-------------------Create Artist----------------------//
 
-async function createArtist(image, name, shortDescription, birthdate, genres, activeSince, website) {
+async function createArtist(id, image, name, shortDescription, birthdate, genres, activeSince, website) {
   const newArtist = {
+    id: id,
     image: image,
     name: name,
     shortDescription: shortDescription,
@@ -85,7 +86,16 @@ async function createArtist(image, name, shortDescription, birthdate, genres, ac
   };
   const postAsJson = JSON.stringify(newArtist);
 
-  const response = await fetch(`${endpoint}/artist`, { method: "POST", body: postAsJson });
+  //   const response = await fetch(`${endpoint}/artist`, { method: "POST",
+  //    body: postAsJson });
+
+  const response = await fetch(`${endpoint}/artist`, {
+    method: "POST",
+    headers: {
+      "Content-Type": "application/json", // Bemærk ændringen her
+    },
+    body: postAsJson,
+  });
 
   return response;
 }
@@ -109,6 +119,7 @@ async function createArtistClicked(event) {
 
   const form = event.target;
 
+  const id = form.id.value;
   const image = form.image.value;
   const name = form.name.value;
   const shortDescription = form.shortDescription.value;
@@ -117,7 +128,7 @@ async function createArtistClicked(event) {
   const activeSince = form.activeSince.value;
   const website = form.website.value;
 
-  const response = await createArtist(image, name, shortDescription, birthdate, genres, activeSince, website);
+  const response = await createArtist(id, image, name, shortDescription, birthdate, genres, activeSince, website);
 
   if (response.ok) {
     form.reset();
