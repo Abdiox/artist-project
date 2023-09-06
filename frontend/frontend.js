@@ -1,6 +1,6 @@
 "use strict";
 
-import { endpoint, getArtists, createArtist } from "./rest-service.js";
+import { endpoint, getArtists, createArtist, deleteArtist } from "./rest-service.js";
 
 endpoint;
 window.addEventListener("load", start);
@@ -15,8 +15,8 @@ async function start() {
   document.querySelector("#create-dialog-show").addEventListener("click", showCreateArtist);
 
   //Delete Artist
-  // document.querySelector("#form-delete-artist").addEventListener("submit", deleteArtistClicked);
-  // document.querySelector("#form-delete-artist .btn-cancel").addEventListener("click", deleteArtistClickedNo);
+  document.querySelector("#form-delete-artist .btn-cancel-yes").addEventListener("submit", deleteArtistClicked);
+  document.querySelector("#form-delete-artist .btn-cancel").addEventListener("click", deleteArtistClickedNo);
 }
 
 //-------------------Update Grid----------------------//
@@ -55,10 +55,10 @@ function showArtists(artistObject) {
   `;
   document.querySelector("#artists").insertAdjacentHTML("beforeend", html);
 
-  // document.querySelector("#artists article:last-child .btn-delete").addEventListener("click", (event) => {
-  //   event.stopPropagation();
-  //   deleteClicked(artistObject);
-  // });
+  document.querySelector("#artists article:last-child .btn-delete").addEventListener("click", (event) => {
+    event.stopPropagation();
+    deleteClicked(artistObject);
+  });
 
   document.querySelector("#artists article:last-child").addEventListener("click", () => artistClicked(artistObject));
 }
@@ -113,8 +113,6 @@ async function createArtistClicked(event) {
   const response = await createArtist(id, image, name, shortDescription, birthdate, genres, activeSince, website);
 
   if (response.ok) {
-    console.log("Created Artist");
-
     form.reset();
     updateGrid();
   }
@@ -123,27 +121,25 @@ async function createArtistClicked(event) {
 
 //-------------------Delete Artist----------------------//
 
-// deleteArtist();
+function deleteClicked(artist) {
+  console.log("Delete button clicked");
+  document.querySelector("#artistName").textContent = `Do you want to delete: ${artist.name} from the database?`;
+  document.querySelector("#form-delete-artist").setAttribute("data-id", artist.id);
+  document.querySelector("#dialog-delete-artist").showModal();
+}
 
-// function deleteClicked(artist) {
-//   console.log("Delete button clicked");
-//   document.querySelector("#artistName").textContent = `Do you want to delete: ${artist.name}in the artist register?`;
-//   document.querySelector("#form-delete-artist").setAttribute("data-id", artist.id);
-//   document.querySelector("#dialog-delete-artist").showModal();
-// }
+async function deleteArtistClicked(event) {
+  console.log(event);
+  const id = event.target.getAttribute("data-id");
+  const response = await deleteArtist(id);
+  if (response.ok) {
+    deleteArtist(id);
+    updateGrid();
+  }
+  document.querySelector("#dialog-delete-artist").close();
+}
 
-// async function deleteArtistClicked(event) {
-//   console.log(event);
-//   const id = event.target.getAttribute("data-id");
-//   const response = await deleteArtist(id);
-//   if (response.ok) {
-//     deleteArtist(id);
-//     updateGrid();
-//   }
-//   document.querySelector("#dialog-delete-artist").close();
-// }
-
-// function deleteArtistClickedNo() {
-//   console.log("Close delete dialog");
-//   document.querySelector("#dialog-delete-artist").close();
-// }
+function deleteArtistClickedNo() {
+  console.log("Close delete dialog");
+  document.querySelector("#dialog-delete-artist").close();
+}

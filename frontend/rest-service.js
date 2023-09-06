@@ -1,6 +1,6 @@
 "use strict";
 
-export { endpoint, getArtists, createArtist };
+export { endpoint, getArtists, createArtist, deleteArtist };
 
 const endpoint = "http://localhost:5500";
 
@@ -35,8 +35,11 @@ async function createArtist(id, image, name, shortDescription, birthdate, genres
 }
 
 async function deleteArtist(id) {
-  // const response = await fetch(`${endpoint}/artist/${id}.json`, {
-  //   method: "DELETE",
-  // });
-  // return response;
+  const response = await fetch(`${endpoint}/artist/${id}`, {
+    method: "DELETE",
+    headers: {
+      "Content-Type": "application/json",
+    },
+  });
+  return response;
 }
