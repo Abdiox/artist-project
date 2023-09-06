@@ -15,8 +15,8 @@ async function start() {
   document.querySelector("#create-dialog-show").addEventListener("click", showCreateArtist);
 
   //Delete Artist
-  document.querySelector("#form-delete-artist .btn-cancel-yes").addEventListener("submit", deleteArtistClicked);
-  document.querySelector("#form-delete-artist .btn-cancel").addEventListener("click", deleteArtistClickedNo);
+  document.querySelector("#form-delete-artist").addEventListener("submit", deleteArtistClicked);
+  document.querySelector("#form-delete-artist").addEventListener("click", deleteArtistClickedNo);
 }
 
 //-------------------Update Grid----------------------//

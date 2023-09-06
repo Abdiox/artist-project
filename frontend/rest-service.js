@@ -37,9 +37,9 @@ async function createArtist(id, image, name, shortDescription, birthdate, genres
 async function deleteArtist(id) {
   const response = await fetch(`${endpoint}/artist/${id}`, {
     method: "DELETE",
-    headers: {
-      "Content-Type": "application/json",
-    },
+    // headers: {
+    //   "Content-Type": "application/json",
+    // },
   });
   return response;
 }
