@@ -1,6 +1,6 @@
 "use strict";
 
-import { endpoint, getArtists, createArtist, deleteArtist } from "./rest-service.js";
+import { endpoint, getArtists, createArtist } from "./rest-service.js";
 
 endpoint;
 window.addEventListener("load", start);
@@ -83,7 +83,7 @@ function showDialog(artistObject) {
 //-------------------Create Artist----------------------//
 
 function showCreateArtist() {
-  const dialog = document.querySelector("#show-artist");
+  const dialog = document.querySelector("#dialog-create-artist");
 
   console.log("Create Artist Dialog Opened");
 
@@ -113,36 +113,37 @@ async function createArtistClicked(event) {
   const response = await createArtist(id, image, name, shortDescription, birthdate, genres, activeSince, website);
 
   if (response.ok) {
-    console.log("Artist have been created!");
+    console.log("Created Artist");
+
     form.reset();
     updateGrid();
   }
-  document.querySelector("#artist-show").close();
+  document.querySelector("#dialog-create-artist").close();
 }
 
 //-------------------Delete Artist----------------------//
 
-deleteArtist();
+// deleteArtist();
 
-function deleteClicked(artist) {
-  console.log("Delete button clicked");
-  document.querySelector("#artistName").textContent = `Do you want to delete: ${artist.name}in the artist register?`;
-  document.querySelector("#form-delete-artist").setAttribute("data-id", artist.id);
-  document.querySelector("#dialog-delete-artist").showModal();
-}
+// function deleteClicked(artist) {
+//   console.log("Delete button clicked");
+//   document.querySelector("#artistName").textContent = `Do you want to delete: ${artist.name}in the artist register?`;
+//   document.querySelector("#form-delete-artist").setAttribute("data-id", artist.id);
+//   document.querySelector("#dialog-delete-artist").showModal();
+// }
 
-async function deleteArtistClicked(event) {
-  console.log(event);
-  const id = event.target.getAttribute("data-id");
-  const response = await deleteArtist(id);
-  if (response.ok) {
-    deleteArtist(id);
-    updateGrid();
-  }
-  document.querySelector("#dialog-delete-artist").close();
-}
+// async function deleteArtistClicked(event) {
+//   console.log(event);
+//   const id = event.target.getAttribute("data-id");
+//   const response = await deleteArtist(id);
+//   if (response.ok) {
+//     deleteArtist(id);
+//     updateGrid();
+//   }
+//   document.querySelector("#dialog-delete-artist").close();
+// }
 
-function deleteArtistClickedNo() {
-  console.log("Close delete dialog");
-  document.querySelector("#dialog-delete-artist").close();
-}
+// function deleteArtistClickedNo() {
+//   console.log("Close delete dialog");
+//   document.querySelector("#dialog-delete-artist").close();
+// }

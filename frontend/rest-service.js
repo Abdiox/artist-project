@@ -1,6 +1,6 @@
 "use strict";
 
-export { endpoint, getArtists, createArtist, deleteArtist };
+export { endpoint, getArtists, createArtist };
 
 const endpoint = "http://localhost:5500";
 
