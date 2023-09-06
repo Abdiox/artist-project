@@ -10,19 +10,33 @@
     "image": "https://heartbeats.dk/wp-content/uploads/2019/12/kendricklamar-new.jpg",
     "shortDescription": "An iconic rapper and lyricist from Compton, California."
   },
+
   {
     "id": 2,
-    "name": "Cardi B",
-    "birthdate": "1992-10-11",
-    "activeSince": "2015-01-01",
-    "genres": ["Hip-Hop", "Trap"],
-    "labels": ["Atlantic Records"],
-    "website": "https://www.cardibofficial.com",
-    "image": "https://soundvenue.com/wp-content/uploads/2022/01/CardiB_2022-920x920.jpg",
-    "shortDescription": "A groundbreaking female rapper from New York."
+    "name": "Lil Tjay",
+    "birthdate": "2001-04-30",
+    "activeSince": "2017-01-01",
+    "genres": ["Hip-Hop", "Rap"],
+    "labels": ["Columbia Records"],
+    "website": "https://www.liltjaymusic.com",
+    "image": "https://yt3.googleusercontent.com/44vzD3efIYpr3_ttsUWWuEUjQvQpiNv5_ZgtMlxcFEN1udJUV3TgBelXHRO8ka0Lux_uXKCYUy4=s900-c-k-c0x00ffffff-no-rj",
+    "shortDescription": "A rising star in the hip-hop scene known for his melodic style."
   },
+
   {
     "id": 3,
+    "name": "Clavish",
+    "birthdate": "1997-03-19",
+    "activeSince": "2018-01-01",
+    "genres": ["Hip-Hop", "Trap"],
+    "labels": ["Independent"],
+    "website": "https://www.clavishmusic.com",
+    "image": "https://www.clashmusic.com/wp-content/uploads/2023/04/Clavish.png",
+    "shortDescription": "A UK-based rapper and artist with a unique style."
+  },
+
+  {
+    "id": 4,
     "name": "Jay-Z",
     "birthdate": "1969-12-04",
     "activeSince": "1986-01-01",
@@ -33,7 +47,7 @@
     "shortDescription": "A legendary rapper, music producer, and businessman."
   },
   {
-    "id": 4,
+    "id": 5,
     "name": "Eminem",
     "birthdate": "1972-10-17",
     "activeSince": "1988-01-01",
@@ -44,7 +58,7 @@
     "shortDescription": "One of the most influential rappers in history with an impressive career."
   },
   {
-    "id": 5,
+    "id": 6,
     "name": "The Weeknd",
     "birthdate": "1990-02-16",
     "activeSince": "2010-01-01",
@@ -56,7 +70,7 @@
   },
 
   {
-    "id": 6,
+    "id": 7,
     "name": "Sheff G",
     "birthdate": "1998-09-23",
     "activeSince": "2016-01-01",
@@ -67,7 +81,7 @@
     "shortDescription": "A prominent figure in the Brooklyn drill music scene."
   },
   {
-    "id": 7,
+    "id": 8,
     "name": "Burna Boy",
     "birthdate": "1991-07-02",
     "activeSince": "2011-01-01",
@@ -78,7 +92,7 @@
     "shortDescription": "A Nigerian Afrobeat sensation known for his unique sound."
   },
   {
-    "id": 8,
+    "id": 9,
     "name": "Lil Baby",
     "birthdate": "1994-12-03",
     "activeSince": "2017-01-01",
@@ -89,7 +103,7 @@
     "shortDescription": "A rising star in the hip-hop and trap music scene."
   },
   {
-    "id": 9,
+    "id": 10,
     "name": "Sleepy Hallow",
     "birthdate": "1999-08-21",
     "activeSince": "2017-01-01",
@@ -99,17 +113,7 @@
     "image": "https://resources.tidal.com/images/1f17467b/ed23/41ff/9ab6/bded0b5b01d3/750x750.jpg",
     "shortDescription": "A Brooklyn rapper known for his drill music contributions."
   },
-  {
-    "id": 10,
-    "name": "Clavish",
-    "birthdate": "1997-03-19",
-    "activeSince": "2018-01-01",
-    "genres": ["Hip-Hop", "Trap"],
-    "labels": ["Independent"],
-    "website": "https://www.clavishmusic.com",
-    "image": "https://www.clashmusic.com/wp-content/uploads/2023/04/Clavish.png",
-    "shortDescription": "A UK-based rapper and artist with a unique style."
-  },
+
   {
     "id": 11,
     "name": "Polo G",
@@ -121,19 +125,9 @@
     "image": "https://i.guim.co.uk/img/media/4167761ac4bdb0dddbe01188768037fe758516bc/0_0_5345_3205/master/5345.jpg?width=1200&height=900&quality=85&auto=format&fit=crop&s=1b93552d6027c1ac8dab4c4387dd726c",
     "shortDescription": "A Chicago rapper known for his introspective lyrics."
   },
+
   {
     "id": 12,
-    "name": "Lil Tjay",
-    "birthdate": "2001-04-30",
-    "activeSince": "2017-01-01",
-    "genres": ["Hip-Hop", "Rap"],
-    "labels": ["Columbia Records"],
-    "website": "https://www.liltjaymusic.com",
-    "image": "https://yt3.googleusercontent.com/44vzD3efIYpr3_ttsUWWuEUjQvQpiNv5_ZgtMlxcFEN1udJUV3TgBelXHRO8ka0Lux_uXKCYUy4=s900-c-k-c0x00ffffff-no-rj",
-    "shortDescription": "A rising star in the hip-hop scene known for his melodic style."
-  },
-  {
-    "id": 13,
     "name": "Drake",
     "birthdate": "1986-10-24",
     "activeSince": "2006-01-01",
@@ -142,5 +136,17 @@
     "website": "https://www.drakeofficial.com",
     "image": "https://media1.popsugar-assets.com/files/thumbor/zan-t_Me63if8oqWYE9ENiPLlhA/0x224:2826x3050/fit-in/2048xorig/filters:format_auto-!!-:strip_icc-!!-/2020/02/11/894/n/1922398/87f6bb525e430e7bd44e40.22278576_/i/Drake.jpg",
     "shortDescription": "A Canadian rapper, singer, and songwriter known for his chart-topping hits and versatile style."
+  },
+
+  {
+    "id": 13,
+    "name": "Cardi B",
+    "birthdate": "1992-10-11",
+    "activeSince": "2015-01-01",
+    "genres": ["Hip-Hop", "Trap"],
+    "labels": ["Atlantic Records"],
+    "website": "https://www.cardibofficial.com",
+    "image": "https://soundvenue.com/wp-content/uploads/2022/01/CardiB_2022-920x920.jpg",
+    "shortDescription": "A groundbreaking female rapper from New York."
   }
 ]

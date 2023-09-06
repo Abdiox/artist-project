@@ -15,7 +15,6 @@ async function getArtists() {
   const response = await fetch(`${endpoint}/artist`);
   const data = await response.json();
   artists = data;
-  console.log(artists);
   displayArtists(artists);
 }
 
@@ -23,9 +22,7 @@ async function getArtists() {
 
 async function updateGrid() {
   await getArtists();
-  console.log(artists);
   displayArtists(artists);
-  console.log(artists);
 }
 
 function displayArtists(listOfArtist) {
