@@ -17,7 +17,7 @@
   <main>
       <section id="underHeader">
         <div id="create-btns">
-          <button class="btns" id="btn-create-game">Add Artist</button>
+          <button class="btns" id="create-dialog-show">Add Artist</button>
         </div>
         <div>
           <label for="sort-games">Sort by:</label>
@@ -39,7 +39,7 @@
     <!------------- Show Dialog ----------->
 <dialog id="dialog-show" class="dialog-artist">
         <form action="" method="post" id="form-show-artist">
-      <!-- <img src="pictures/favicon.ico" alt="Logo" class="logo" /> -->
+      <img src="https://freesvg.org/img/1548005024.png" alt="Logo" class="logo" />
       <section class="dialog-artist">
                 <figure><img id="image" src="" /></figure>
         <article>
@@ -61,11 +61,11 @@
     <!------------- Create Dialog ----------->
 
 
-    <dialog id="dialog-create-artist" class="dialog-artist">
-      <img src="pictures/favicon.ico" alt="Logo" class="logo" />
-      <h1>Add game</h1>
+    <dialog id="show-artist" class="dialog-artist">
+      <img src="https://freesvg.org/img/1548005024.png" alt="Logo" class="logo" />
+      <h1>Add artist</h1>
 
-      <form action="" method="post" id="createArtist">
+      <form action="" method="post" id="create-artist">
         <label for="image">Image:</label>
         <input type="url" id="image" name="image" placeholder="Paste an image URL" required /><br /><br />
 
@@ -82,6 +82,7 @@
 
         <label for="genres">Genre:</label>
         <select name="genres" id="genres">
+            <option value="notSelected">Not selected</option>
             <option value="hiphop">HipHop</option>
             <option value="rap">Rap</option>
             <option value="afrobeat">Afrobeat</option>
@@ -99,7 +100,7 @@
 <input type="url" id="website" name="website" placeholder="https://www.example.com" required /><br /><br />
 
 
-        <input type="submit" value="Add new game" />
+        <input type="submit" value="Add new artist" />
       </form>
       <button class="close" type="button">X</button>
     </dialog>

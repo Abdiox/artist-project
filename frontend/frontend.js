@@ -9,6 +9,9 @@ async function start() {
   await getArtists();
   updateGrid();
   console.log(artists);
+
+  //Create Artist
+  document.querySelector("#create-dialog-show").addEventListener("click", showCreateArtist);
 }
 
 async function getArtists() {
@@ -70,12 +73,31 @@ function showDialog(artistObject) {
 
 //-------------------Create Artist----------------------//
 
-function showCreateModal() {
-  const dialog = document.querySelector("#dialog-create-game");
+async function createArtist(image, name, shortDescription, birthdate, genres, activeSince, website) {
+  const newArtist = {
+    image: image,
+    name: name,
+    shortDescription: shortDescription,
+    birthdate: birthdate,
+    genres: genres,
+    activeSince: activeSince,
+    website: website,
+  };
+  const postAsJson = JSON.stringify(newArtist);
+
+  const response = await fetch(`${endpoint}/artist`, { method: "POST", body: postAsJson });
+
+  return response;
+}
+
+function showCreateArtist() {
+  const dialog = document.querySelector("#show-artist");
+
+  console.log("Create Artist Dialog Opened");
 
   dialog.showModal();
 
-  document.querySelector("#createGame").addEventListener("submit", createGameClicked);
+  document.querySelector("#create-artist").addEventListener("submit", createArtistClicked);
 
   dialog.querySelector(".close").addEventListener("click", () => {
     dialog.close();
@@ -101,22 +123,7 @@ async function createArtistClicked(event) {
     form.reset();
     updateGrid();
   }
-  document.querySelector("#dialog-create-artist").close();
+  document.querySelector("#show-artist").close();
 }
 
-async function createArtist(image, name, shortDescription, birthdate, genres, activeSince, website) {
-  const newArtist = {
-    image: image,
-    name: name,
-    shortDescription: shortDescription,
-    birthdate: birthdate,
-    genres: genres,
-    activeSince: activeSince,
-    website: website,
-  };
-  const postAsJson = JSON.stringify(newArtist);
-
-  const response = await fetch(`/data/artists.json`, { method: "POST", body: postAsJson });
-
-  return response;
-}
+//-------------------Delete Artist----------------------//
