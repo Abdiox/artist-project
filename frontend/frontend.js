@@ -55,10 +55,10 @@ function showArtists(artistObject) {
   `;
   document.querySelector("#artists").insertAdjacentHTML("beforeend", html);
 
-  document.querySelector("#artists article:last-child .btn-delete").addEventListener("click", (event) => {
-    event.stopPropagation();
-    deleteClicked(artistObject);
-  });
+  // document.querySelector("#artists article:last-child .btn-delete").addEventListener("click", (event) => {
+  //   event.stopPropagation();
+  //   deleteClicked(artistObject);
+  // });
 
   document.querySelector("#artists article:last-child").addEventListener("click", () => artistClicked(artistObject));
 }
