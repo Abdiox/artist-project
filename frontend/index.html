@@ -1,0 +1,44 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Best Artists</title>
+    <link rel="stylesheet" href="/frontend/frontend.css" />
+  </head>
+  <body>
+    <header>
+      <img src="https://freesvg.org/img/1548005024.png" alt="" id="music-logo" class="header-icons" />
+      <input type="search" id="input-search" placeholder="Search For Artist" />
+      <button class="header-icons" id="sign-in">Sign In</button>
+    </header>
+    <!------------- The main area with artists in CRUD ----------->
+  <main>
+      <section id="underHeader">
+        <div id="create-btns">
+          <button class="btns" id="btn-create-game">Add Artist</button>
+        </div>
+        <div>
+          <label for="sort-games">Sort by:</label>
+          <select name="sort-games" id="sort-games">
+            <option value="">Not selected</option>
+            <option value="title">Name</option>
+            <option value="rating">Age</option>
+          </select>
+          <label for="filter-artist">Filter:</label>
+           <select name="filter-artist" id="filter-artist">
+            <option value="">Non selected</option>
+            <option value="adventure">Signed</option>
+            <option value="strategy">Not signed</option>
+          </select required> <br /><br /> 
+        </div>
+      </section>
+      <section id="artists" class="grid-container"></section>
+    </main>
+
+
+
+  </body>
+  <script src="/frontend/frontend.js"></script>
+</html>
