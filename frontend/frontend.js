@@ -50,14 +50,14 @@ function displayArtists(listOfArtists) {
   }
 }
 
-function showArtists(dataObject) {
+function showArtists(artistObject) {
   const html = /*html*/ `
     <article class="grid-item">
-      <img src= "${dataObject.image}"/>
+      <img src= "${artistObject.image}"/>
       <div class="grid-info">
-        <h2>${dataObject.id}</h2>
-        <h3>${dataObject.name}</h3>
-         <p>${dataObject.birthdate}</p>
+        <h2>${artistObject.id}</h2>
+        <h3>${artistObject.name}</h3>
+         <p>${artistObject.birthdate}</p>
       </div>
       <div class="btns">
         <button class="btn-update">Opdater</button>
@@ -66,4 +66,21 @@ function showArtists(dataObject) {
     </article>
   `;
   document.querySelector("#artists").insertAdjacentHTML("beforeend", html);
+  document.querySelector("#artists article:last-child").addEventListener("click", () => artistClicked(artistObject));
+}
+//-------------------Show Dialog----------------------//
+function artistClicked(artistObject) {
+  console.log("Detail view opened");
+  showDialog(artistObject);
+  document.querySelector("#dialog-show").showModal();
+}
+
+function showDialog(artistObject) {
+  document.querySelector("#image").src = artistObject.image;
+  document.querySelector("#name").textContent = artistObject.name;
+  document.querySelector("#shortDescription").textContent = artistObject.shortDescription;
+  document.querySelector("#birthdate").textContent = artistObject.birthdate;
+  document.querySelector("#genres").textContent = artistObject.genres;
+  document.querySelector("#activeSince").textContent = artistObject.activeSince; // Ændret til "activeSince"
+  document.querySelector("#website").textContent = artistObject.website;
 }
