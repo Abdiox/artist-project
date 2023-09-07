@@ -1,6 +1,8 @@
 "use strict";
 
 import { endpoint, getArtists, createArtist, deleteArtist, updateArtist } from "./rest-service.js";
+import { inputSearchChanged, searchArtist } from "./helpers.js";
+export { artists, displayArtists };
 
 endpoint;
 window.addEventListener("load", start);
@@ -202,15 +204,3 @@ function deleteArtistClickedNo() {
 }
 
 //-------------------Sortering----------------------//
-
-function inputSearchChanged(event) {
-  const value = event.target.value;
-  const artistToShow = searchArtist(value);
-  displayArtists(artistToShow);
-}
-
-const searchArtist = (searchValue) => {
-  const searchValues = searchValue.toLowerCase();
-
-  return artists.filter((artist) => artist.name.toLowerCase().includes(searchValues));
-};
