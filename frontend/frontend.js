@@ -55,9 +55,8 @@ function showArtists(artistObject) {
     <article class="grid-item">
       <img src= "${artistObject.image}"/>
       <div class="grid-info">
-        <h2>${artistObject.id}</h2>
-        <h3>${artistObject.name}</h3>
-         <p>${artistObject.birthdate}</p>
+        <h2>${artistObject.name}</h2>
+        <h3>${artistObject.genres}</h3>
       </div>
       <div class="btns">
         <button class="btn-update">Opdater</button>
