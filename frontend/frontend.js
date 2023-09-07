@@ -20,6 +20,10 @@ async function start() {
   //Delete Artist
   document.querySelector("#form-delete-artist").addEventListener("submit", deleteArtistClicked);
   document.querySelector("#form-delete-artist").addEventListener("click", deleteArtistClickedNo);
+
+  //Input sort
+  document.querySelector("#input-search").addEventListener("keyup", inputSearchChanged);
+  document.querySelector("#input-search").addEventListener("search", inputSearchChanged);
 }
 
 //-------------------Update Grid----------------------//
@@ -196,3 +200,17 @@ function deleteArtistClickedNo() {
   console.log("Close delete dialog");
   document.querySelector("#dialog-delete-artist").close();
 }
+
+//-------------------Sortering----------------------//
+
+function inputSearchChanged(event) {
+  const value = event.target.value;
+  const artistToShow = searchArtist(value);
+  displayArtists(artistToShow);
+}
+
+const searchArtist = (searchValue) => {
+  const searchValues = searchValue.toLowerCase();
+
+  return artists.filter((artist) => artist.name.toLowerCase().includes(searchValues));
+};
