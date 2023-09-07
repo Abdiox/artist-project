@@ -37,7 +37,7 @@ async function filterArtistChanged(event) {
   const value = event.target.value;
   console.log(value);
   if (value === "favourites") {
-    const artistToShow = filterArtist(value);
+    const artistToShow = await filterArtist(value);
     displayArtists(artistToShow);
   } else if (value === "allArtists") {
     displayArtists(artists);
