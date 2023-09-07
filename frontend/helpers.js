@@ -1,6 +1,6 @@
 const endpoint = "http://localhost:5500";
 
-export { endpoint, inputSearchChanged, sortBy };
+export { endpoint, inputSearchChanged, sortBy, filterArtistChanged };
 import { artists, displayArtists } from "./frontend.js";
 
 function inputSearchChanged(event) {
@@ -27,12 +27,39 @@ function sortBy(event) {
         artist.birthdate = new Date(artist.birthdate);
       }
     });
-
-    // Sorter kunstnerne efter fødselsdato
     artists.sort((artist1, artist2) => artist1.birthdate - artist2.birthdate);
-
-    // Nu er din 'artists'-liste sorteret efter fødselsdato
   }
 
   displayArtists(artists);
 }
+
+async function filterArtistChanged(event) {
+  const value = event.target.value;
+  console.log(value);
+  if (value === "favourites") {
+    const artistToShow = filterArtist(value);
+    displayArtists(artistToShow);
+  } else if (value === "allArtists") {
+    displayArtists(artists);
+  }
+}
+
+async function filterArtist() {
+  const data = await fetch(`${endpoint}/favorites`);
+  const artists = await data.json();
+  displayArtists(artists);
+  return artists;
+}
+
+// function filterArtistChangedBack(event) {
+//   const value = event.target.value;
+//   const artistToShow = filterArtistBack(value);
+//   displayArtists(artistToShow);
+// }
+
+// async function filterArtistBack() {
+//   const data = await fetch(`${endpoint}/artists`);
+//   const artists = await data.json();
+//   displayArtists(artists);
+//   return artists;
+// }

@@ -1,7 +1,8 @@
 "use strict";
 
 import { endpoint, getArtists, createArtist, deleteArtist, updateArtist } from "./rest-service.js";
-import { inputSearchChanged, sortBy } from "./helpers.js";
+import { inputSearchChanged, sortBy, filterArtistChanged } from "./helpers.js";
+// import { log } from "console";
 export { artists, displayArtists };
 
 endpoint;
@@ -27,23 +28,28 @@ async function start() {
   document.querySelector("#input-search").addEventListener("keyup", inputSearchChanged);
   document.querySelector("#input-search").addEventListener("search", inputSearchChanged);
 
-  //Sortby
+  //Sort by
   document.querySelector("#sort-artist").addEventListener("change", sortBy);
+
+  //Filter By
+  document.querySelector("#filter-artist").addEventListener("change", filterArtistChanged);
+  // document.querySelector("#filter-artist").addEventListener("change", filterArtistChanged);
 }
 
 //-------------------Update Grid----------------------//
 
 async function updateGrid() {
   artists = await getArtists();
+  console.log(artists);
+
   displayArtists(artists);
   console.log(artists);
 }
 
 //------------------- Get Artist  ----------------------//
 
-getArtists();
-
 function displayArtists(listOfArtist) {
+  console.log(listOfArtist);
   document.querySelector("#artists").innerHTML = "";
   for (const artist of listOfArtist) {
     showArtists(artist);
@@ -60,21 +66,41 @@ function showArtists(artistObject) {
       </div>
       <div class="btns">
         <button class="btn-update">Opdater</button>
-        <button class="btn-delete">Slet</button>
+        <button class="btn-delete">Slet</button>    
       </div>
     </article>
   `;
   document.querySelector("#artists").insertAdjacentHTML("beforeend", html);
+
+  //------------------- Update  ----------------------//
 
   document.querySelector("#artists article:last-child .btn-update").addEventListener("click", (event) => {
     event.stopPropagation();
     updateClicked(artistObject);
   });
 
+  //------------------- Delete  ----------------------//
+
   document.querySelector("#artists article:last-child .btn-delete").addEventListener("click", (event) => {
     event.stopPropagation();
     deleteClicked(artistObject);
   });
+
+  //------------------- Favourites  ----------------------//
+
+  // document.querySelector("#artists article:last-child .btn-favorite").addEventListener("click", (event) => {
+  //   event.stopPropagation();
+  //   markAsFavorite(artistObject);
+  // });
+
+  // document.querySelector("#artists article:last-child .btn-not-favorite").addEventListener("click", (event) => {
+  //   event.stopPropagation();
+  //   markAsNotFavorite(artistObject);
+  // });
+
+  // Legg til dette i frontend-JavaScript-filen din
+
+  //------------------- Show  ----------------------//
 
   document.querySelector("#artists article:last-child").addEventListener("click", () => artistClicked(artistObject));
 }
@@ -205,4 +231,4 @@ function deleteArtistClickedNo() {
   document.querySelector("#dialog-delete-artist").close();
 }
 
-//-------------------Sortering----------------------//
+//-------------------Filtrering----------------------//
