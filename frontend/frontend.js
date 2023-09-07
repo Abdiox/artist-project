@@ -109,7 +109,7 @@ async function createArtistClicked(event) {
 
   const form = event.target;
 
-  const id = form.id.value;
+  // const id = form.id.value;
   const image = form.image.value;
   const name = form.name.value;
   const shortDescription = form.shortDescription.value;
@@ -118,7 +118,7 @@ async function createArtistClicked(event) {
   const activeSince = form.activeSince.value;
   const website = form.website.value;
 
-  const response = await createArtist(id, image, name, shortDescription, birthdate, genres, activeSince, website);
+  const response = await createArtist(image, name, shortDescription, birthdate, genres, activeSince, website);
 
   if (response.ok) {
     form.reset();

@@ -12,9 +12,9 @@ async function getArtists() {
 
 //-------------------Create Artist----------------------//
 
-async function createArtist(id, image, name, shortDescription, birthdate, genres, activeSince, website) {
+async function createArtist(image, name, shortDescription, birthdate, genres, activeSince, website) {
   const newArtist = {
-    id: id,
+    // id: id,
     image: image,
     name: name,
     shortDescription: shortDescription,
