@@ -38,7 +38,7 @@ async function createArtist(image, name, shortDescription, birthdate, genres, ac
 
 //-------------------Update Artist----------------------//
 
-async function updateArtist(image, name, shortDescription, birthdate, genres, activeSince, website) {
+async function updateArtist(id, image, name, shortDescription, birthdate, genres, activeSince, website) {
   const updatedArtist = {
     image: image,
     name: name,

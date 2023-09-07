@@ -163,7 +163,7 @@ async function updateArtistClicked(event) {
   const activeSince = form.activeSince.value;
   const website = form.website.value;
 
-  const response = await updateArtist(image, name, shortDescription, birthdate, genres, activeSince, website); // use values to create a new post
+  const response = await updateArtist(id, image, name, shortDescription, birthdate, genres, activeSince, website); // use values to create a new post
   if (response.ok) {
     console.log("Artist have been updated");
     updateGrid();
