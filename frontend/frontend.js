@@ -1,7 +1,7 @@
 "use strict";
 
 import { endpoint, getArtists, createArtist, deleteArtist, updateArtist } from "./rest-service.js";
-import { inputSearchChanged, searchArtist } from "./helpers.js";
+import { inputSearchChanged, sortBy } from "./helpers.js";
 export { artists, displayArtists };
 
 endpoint;
@@ -23,9 +23,12 @@ async function start() {
   document.querySelector("#form-delete-artist").addEventListener("submit", deleteArtistClicked);
   document.querySelector("#form-delete-artist").addEventListener("click", deleteArtistClickedNo);
 
-  //Input sort
+  //Searchbar sort
   document.querySelector("#input-search").addEventListener("keyup", inputSearchChanged);
   document.querySelector("#input-search").addEventListener("search", inputSearchChanged);
+
+  //Sortby
+  document.querySelector("#sort-artist").addEventListener("change", sortBy);
 }
 
 //-------------------Update Grid----------------------//
