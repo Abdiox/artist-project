@@ -21,7 +21,6 @@ function sortBy(event) {
   if (selectedValue === "name") {
     artists.sort((artist1, artist2) => artist1.name.localeCompare(artist2.name));
   } else if (selectedValue === "birthdate") {
-    // Konverterer fødselsdatoerne til Date-objekter, hvis de ikke allerede er det
     artists.forEach((artist) => {
       if (typeof artist.birthdate === "string") {
         artist.birthdate = new Date(artist.birthdate);
@@ -50,16 +49,3 @@ async function filterArtist() {
   displayArtists(artists);
   return artists;
 }
-
-// function filterArtistChangedBack(event) {
-//   const value = event.target.value;
-//   const artistToShow = filterArtistBack(value);
-//   displayArtists(artistToShow);
-// }
-
-// async function filterArtistBack() {
-//   const data = await fetch(`${endpoint}/artists`);
-//   const artists = await data.json();
-//   displayArtists(artists);
-//   return artists;
-// }

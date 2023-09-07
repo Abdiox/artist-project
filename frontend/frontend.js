@@ -2,7 +2,6 @@
 
 import { endpoint, getArtists, createArtist, deleteArtist, updateArtist } from "./rest-service.js";
 import { inputSearchChanged, sortBy, filterArtistChanged } from "./helpers.js";
-// import { log } from "console";
 export { artists, displayArtists };
 
 endpoint;
@@ -33,15 +32,12 @@ async function start() {
 
   //Filter By
   document.querySelector("#filter-artist").addEventListener("change", filterArtistChanged);
-  // document.querySelector("#filter-artist").addEventListener("change", filterArtistChanged);
 }
 
 //-------------------Update Grid----------------------//
 
 async function updateGrid() {
   artists = await getArtists();
-  console.log(artists);
-
   displayArtists(artists);
   console.log(artists);
 }
@@ -49,7 +45,6 @@ async function updateGrid() {
 //------------------- Get Artist  ----------------------//
 
 function displayArtists(listOfArtist) {
-  console.log(listOfArtist);
   document.querySelector("#artists").innerHTML = "";
   for (const artist of listOfArtist) {
     showArtists(artist);
@@ -85,20 +80,6 @@ function showArtists(artistObject) {
     event.stopPropagation();
     deleteClicked(artistObject);
   });
-
-  //------------------- Favourites  ----------------------//
-
-  // document.querySelector("#artists article:last-child .btn-favorite").addEventListener("click", (event) => {
-  //   event.stopPropagation();
-  //   markAsFavorite(artistObject);
-  // });
-
-  // document.querySelector("#artists article:last-child .btn-not-favorite").addEventListener("click", (event) => {
-  //   event.stopPropagation();
-  //   markAsNotFavorite(artistObject);
-  // });
-
-  // Legg til dette i frontend-JavaScript-filen din
 
   //------------------- Show  ----------------------//
 
@@ -230,5 +211,3 @@ function deleteArtistClickedNo() {
   console.log("Close delete dialog");
   document.querySelector("#dialog-delete-artist").close();
 }
-
-//-------------------Filtrering----------------------//
